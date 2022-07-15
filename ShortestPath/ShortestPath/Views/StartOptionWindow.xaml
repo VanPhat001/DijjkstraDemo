@@ -1,0 +1,31 @@
+﻿<Window x:Class="ShortestPath.Views.StartOptionWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ShortestPath.Views"
+        mc:Ignorable="d"
+        Title="StartOptionWindow" Height="250" Width="237">
+    <DockPanel LastChildFill="False">
+        <DockPanel.Resources>
+            <Style TargetType="RadioButton">
+                <Setter Property="FontSize" Value="20"></Setter>
+                <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+                <Setter Property="DockPanel.Dock" Value="Top"></Setter>
+            </Style>
+            <Style TargetType="Button">
+                <Setter Property="FontSize" Value="20"></Setter>
+            </Style>
+        </DockPanel.Resources>
+        <RadioButton x:Name="radioEmpty">Empty Cell</RadioButton>
+        <RadioButton x:Name="radioTrap">Trap Cell</RadioButton>
+        <RadioButton x:Name="radioStart">Start Cell</RadioButton>
+        <RadioButton x:Name="radioEnd">End Cell</RadioButton>
+
+        <StackPanel DockPanel.Dock="Bottom">
+            <Button Content="Find path" Click="Button_Click_FindPath"/>
+            <Button Click="Button_Click_ClearPath">Clear path</Button>
+            <Button Click="Button_Click_ClearMap">Clear map</Button>
+        </StackPanel>
+    </DockPanel>
+</Window>

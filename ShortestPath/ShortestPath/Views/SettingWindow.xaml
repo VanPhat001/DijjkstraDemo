@@ -1,0 +1,75 @@
+﻿<Window x:Class="ShortestPath.Views.SettingWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ShortestPath.Views"
+        mc:Ignorable="d"
+        Title="SettingWindow" Height="450" Width="800">
+    <Grid>
+        <!--row layout-->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1.5*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="2*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <!--column layout-->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="100"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <!--style-->
+        <Grid.Resources>
+            <Style TargetType="TextBlock">
+                <Setter Property="VerticalAlignment" Value="Center"></Setter>
+                <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+                <Setter Property="FontSize" Value="20"></Setter>
+                <Setter Property="Foreground" Value="Blue"></Setter>
+                <Setter Property="FontWeight" Value="Bold"></Setter>
+            </Style>
+            <Style TargetType="Slider">
+                <Setter Property="VerticalAlignment" Value="Center"></Setter>
+            </Style>
+            <Style TargetType="Label">
+                <Setter Property="VerticalAlignment" Value="Center"></Setter>
+                <Setter Property="HorizontalAlignment" Value="Right"></Setter>
+                <Setter Property="Padding" Value="0,0,20,0"></Setter>
+                <Setter Property="FontSize" Value="20"></Setter>
+            </Style>
+        </Grid.Resources>
+
+        <!--row 1-->
+        <TextBlock Grid.Row="1">Rows:</TextBlock>
+        <Slider Grid.Row="1" Grid.Column="1" x:Name="sliderRows" Minimum="5" Maximum="30"></Slider>
+        <Label Grid.Row="1" Grid.Column="2">
+            <Label.Content>
+                <StackPanel Orientation="Horizontal">
+                    <TextBox Width="40" TextAlignment="Center" 
+                             Text="{Binding ElementName=sliderRows, Path=Value, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"></TextBox>
+                    <TextBlock>/</TextBlock>
+                    <TextBlock Text="{Binding ElementName=sliderRows, Path=Maximum}"></TextBlock>
+                </StackPanel>
+            </Label.Content>
+        </Label>
+
+        <!--row 2-->
+        <TextBlock Grid.Row="2">Cols:</TextBlock>
+        <Slider Grid.Row="2" Grid.Column="1" x:Name="sliderCols" Minimum="5" Maximum="30"></Slider>
+        <Label Grid.Row="2" Grid.Column="2">
+            <Label.Content>
+                <StackPanel Orientation="Horizontal">
+                    <TextBox Width="40" TextAlignment="Center" 
+                             Text="{Binding ElementName=sliderCols, Path=Value, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"></TextBox>
+                    <TextBlock>/</TextBlock>
+                    <TextBlock Text="{Binding ElementName=sliderCols, Path=Maximum}"></TextBlock>
+                </StackPanel>
+            </Label.Content>
+        </Label>
+
+        <!--row 4-->
+        <Button Grid.Row="5" Grid.ColumnSpan="3" Height="44" FontSize="28" Foreground="Blue" FontWeight="Bold" Click="Button_Click">OK</Button>
+    </Grid>
+</Window>
